@@ -54,12 +54,12 @@ User.find_by(name: 'John Doe')&.posts
 2. Find all the tags that belong to a post with the title "Post 1".
 
 ```ruby
-Post.find_by(title: 'Post 1')&.tags
+Post.find_by(title: 'The Best Ski Athletes of 2023')&.tags
 ```
 
 3. Find all users that have a post with the tag "Tag 1".
 
 ```ruby
-Tag.find_by(name: 'Tag 1')&.posts&.map(&:user)&.uniq
+Tag.find_by(name: 'Music')&.posts&.map(&:user)&.uniq
 ```
 
