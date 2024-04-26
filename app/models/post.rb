@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-    belongs_to: user 
+    belongs_to :user 
     has_many :post_tags, dependent: :destroy
     has_many :tags, through: :post_tags     
     belongs_to :parent_post, class_name: 'Post', optional: true

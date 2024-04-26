@@ -13,30 +13,31 @@ User.delete_all
 Tag.delete_all
 
 users = [
-  User.create!
-  (name: "Amelia Barranco", 
-  email: "abarranco@gmail.com",
-  password: 'clave123'),
-
-  User.create!
-  (name: "Saga Goñi", 
-  email: "sgoñi@gmail.com", 
-  password: 'flores15'),
-
-  User.create!
-  (name: "Trinidad Infante", 
-  email: "tinfante@gmail.com", 
-  password: 'porch54'),
-
-  User.create!
-  (name: "Mikaela Stambuk", 
-  email: "mstambuk@gmail.com", 
-  password: 'clave111'),
-
-  User.create!
-  (name: "Dua Lipa", 
-  email: "Dlipa@gmail.com", 
-  password: 'pasto000')
+  User.create!(
+    name: "Amelia Barranco", 
+    email: "abarranco@gmail.com",
+    password: 'clave123'
+  ),
+  User.create!(
+    name: "Saga Goni", 
+    email: "sgoni@gmail.com", 
+    password: 'flores15'
+  ),
+  User.create!(
+    name: "Trinidad Infante", 
+    email: "tinfante@gmail.com", 
+    password: 'porch54'
+  ),
+  User.create!(
+    name: "Mikaela Stambuk", 
+    email: "mstambuk@gmail.com", 
+    password: 'clave111'
+  ),
+  User.create!(
+    name: "Dua Lipa", 
+    email: "Dlipa@gmail.com", 
+    password: 'pasto000'
+  )
 ]
 
 tags = [
@@ -55,15 +56,21 @@ posts = [
   Post.create!(title: "Top Travel Destinations for 2023", content: "Where to go this year for vacation with your friends or family.", user: users[4], published_at: Time.zone.now),
   Post.create!(title: "Fitness Routines for Athletes", content: "A guide to staying in shape.", user: users[0], published_at: Time.zone.now),
   Post.create!(title: "Sci-Fi Cinema and Technology", content: "How movies predict tech futures.", user: users[1], published_at: Time.zone.now),
-  Post.create!(title: "Jazz and Modern Music", content: "A look at the influence of jazz.", user: users[2], published_at: Time.zone.now),
+  Post.create!(title: "Jazz Music", content: "A look at the influence of jazz.", user: users[2], published_at: Time.zone.now),
   Post.create!(title: "Training Your Dog", content: "Basic commands every dog should know.", user: users[3], published_at: Time.zone.now),
   Post.create!(title: "Budget Travel Tips", content: "How to travel well without spending too much.", user: users[4], published_at: Time.zone.now)
 ]
 
+"""
 posts.each_with_index do |post, index|
     post.tags << tags[index % tags.size]
 end
 
 tags.each_with_index do |tag, index|
     posts[index % posts.size].tags << tag unless posts[index % posts.size].tags.include?(tag)
+end
+"""
+
+posts.each do |post|
+  post.tags << tags.sample
 end
